@@ -8,7 +8,6 @@ import "../bases/tcb/TCBInfoV2Base.sol";
 /**
  * @title Automata DCAP QuoteV3 Verifier
  */
-
 contract V3QuoteVerifier is QuoteVerifierBase, TCBInfoV2Base {
     constructor(address _ecdsaVerifier, address _router) QuoteVerifierBase(_router, 3) P256Verifier(_ecdsaVerifier) {}
 
@@ -136,16 +135,17 @@ contract V3QuoteVerifier is QuoteVerifierBase, TCBInfoV2Base {
         if (!success) {
             return (success, bytes("Failed to verify X509 Chain"));
         }
-
+        V3Quote memory quoteCopy = quote;
+        bytes memory rawBodyCopy = rawBody;
         // Step 5: Signature Verification on local isv report and qereport by PCK
         bytes memory localAttestationData = abi.encodePacked(rawHeader, rawBody);
         success = attestationVerification(
             rawQeReport,
-            quote.authData.qeReportSignature,
+            quoteCopy.authData.qeReportSignature,
             parsedCerts[0].subjectPublicKey,
             localAttestationData,
-            quote.authData.ecdsa256BitSignature,
-            quote.authData.ecdsaAttestationKey
+            quoteCopy.authData.ecdsa256BitSignature,
+            quoteCopy.authData.ecdsaAttestationKey
         );
         if (!success) {
             return (success, bytes("Failed to verify attestation and/or qe report signatures"));
@@ -156,7 +156,7 @@ contract V3QuoteVerifier is QuoteVerifierBase, TCBInfoV2Base {
             tee: SGX_TEE,
             tcbStatus: tcbStatus,
             fmspcBytes: bytes6(pckTcb.fmspcBytes),
-            quoteBody: rawBody,
+            quoteBody: rawBodyCopy,
             advisoryIDs: new string[](0)
         });
         serialized = serializeOutput(output);
