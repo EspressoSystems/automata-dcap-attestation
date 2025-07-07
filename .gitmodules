@@ -9,4 +9,5 @@
 	url = https://github.com/risc0/risc0-ethereum
 [submodule "lib/automata-on-chain-pccs"]
 	path = lib/automata-on-chain-pccs
-	url = https://github.com/automata-network/automata-on-chain-pccs
+	url = https://github.com/EspressoSystems/automata-on-chain-pccs
+	branch = integration

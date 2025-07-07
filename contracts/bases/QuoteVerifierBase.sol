@@ -150,6 +150,10 @@ abstract contract QuoteVerifierBase is IQuoteVerifier, EnclaveIdBase, X509ChainB
         bytes32 rootCaCrlHash = bytes32(journal[offset + 64:offset + 96]);
         bytes32 pckCrlHash = bytes32(journal[offset + 96:offset + 128]);
 
+        return _checkCollateralHashes(rootCaHash, tcbSigningHash, rootCaCrlHash, pckCrlHash);
+    }
+
+    function _checkCollateralHashes(bytes32 rootCaHash, bytes32 tcbSigningHash, bytes32 rootCaCrlHash, bytes32 pckCrlHash) internal view returns (bool) {
         (bool tcbSigningFound, bytes32 expectedTcbSigningHash) = pccsRouter.getCertHash(CA.SIGNING);
         if (!tcbSigningFound || tcbSigningHash != expectedTcbSigningHash) {
             return false;
