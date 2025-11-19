@@ -5,8 +5,8 @@ import {BytesUtils, P256Verifier} from "../utils/P256Verifier.sol";
 import {PCKCollateral, PCKCertTCB} from "../types/CommonStruct.sol";
 import {IPCCSRouter} from "../interfaces/IPCCSRouter.sol";
 
-import {LibString} from "solady/utils/LibString.sol";
-import {Base64} from "solady/utils/Base64.sol";
+import {LibString} from "@solady/utils/LibString.sol";
+import {Base64} from "@solady/utils/Base64.sol";
 import {PCKHelper, X509CertObj} from "@automata-network/on-chain-pccs/helpers/PCKHelper.sol";
 import {X509CRLHelper} from "@automata-network/on-chain-pccs/helpers/X509CRLHelper.sol";
 import {CA} from "@automata-network/on-chain-pccs/Common.sol";

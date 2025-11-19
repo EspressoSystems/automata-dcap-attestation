@@ -3,8 +3,8 @@ pragma solidity ^0.8.13;
 
 import "forge-std/Test.sol";
 import "forge-std/StdJson.sol";
-import "solady/utils/JSONParserLib.sol";
-import "solady/utils/LibString.sol";
+import "@solady/utils/JSONParserLib.sol";
+import "@solady/utils/LibString.sol";
 
 import {CA} from "@automata-network/on-chain-pccs/Common.sol";
 

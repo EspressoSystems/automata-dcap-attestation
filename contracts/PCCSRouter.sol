@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 
 import "./interfaces/IPCCSRouter.sol";
 
-import {Ownable} from "solady/auth/Ownable.sol";
+import {Ownable} from "@solady/auth/Ownable.sol";
 import {EnclaveIdentityDao} from "@automata-network/on-chain-pccs/bases/EnclaveIdentityDao.sol";
 import {FmspcTcbDao} from "@automata-network/on-chain-pccs/bases/FmspcTcbDao.sol";
 import {PcsDao} from "@automata-network/on-chain-pccs/bases/PcsDao.sol";

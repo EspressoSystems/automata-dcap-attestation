@@ -6,7 +6,7 @@ import {IQuoteVerifier} from "./interfaces/IQuoteVerifier.sol";
 import {BELE} from "./utils/BELE.sol";
 import "./types/Constants.sol";
 import {Header} from "./types/CommonStruct.sol";
-import {Ownable} from "solady/auth/Ownable.sol";
+import {Ownable} from "@solady/auth/Ownable.sol";
 
 // ZK-Coprocessor imports:
 import {IRiscZeroVerifier} from "risc0/IRiscZeroVerifier.sol";
@@ -109,7 +109,7 @@ abstract contract AttestationEntrypointBase is Ownable {
 
     /**
      * @notice verifies an attestation using SNARK proofs
-     * 
+     *
      * @param output - The output of the Guest program, this includes:
      * - VerifiedOutput struct
      * - RootCA hash
@@ -120,8 +120,8 @@ abstract contract AttestationEntrypointBase is Ownable {
      * @param proofBytes - The encoded cryptographic proof (i.e. SNARK)).
      */
     function _verifyAndAttestWithZKProof(
-        bytes calldata output, 
-        ZkCoProcessorType zkCoprocessor, 
+        bytes calldata output,
+        ZkCoProcessorType zkCoprocessor,
         bytes calldata proofBytes
     )
         internal
